@@ -1,73 +1,180 @@
-# Welcome to your Lovable project
+# Epiphanie Chocolate - Calgary's Premier Artisanal Chocolate Shop
 
-## Project info
+A beautiful, responsive marketing website for Epiphanie Chocolate, showcasing premium handcrafted chocolates, hot beverages, and custom treats in Calgary's Kensington district.
 
-**URL**: https://lovable.dev/projects/d3858805-cf36-4f92-84da-b4fafb6f1d74
+## 🚀 Quick Start
 
-## How can I edit this code?
+```bash
+# Install dependencies
+npm install
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/d3858805-cf36-4f92-84da-b4fafb6f1d74) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## 🏗️ Architecture
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This site is built with a **modular component system** that allows for easy reordering and customization:
 
-**Use GitHub Codespaces**
+### Core Technologies
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **Tailwind CSS** with custom design system
+- **Shadcn/ui** components
+- **Lucide React** icons
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Design System
+- **Brand Colors**: Dark chocolate, accent brown, cream, warm orange-red
+- **Typography**: Playfair Display (headings) + Inter (body)
+- **Accessibility**: WCAG AA compliant with semantic HTML
+- **Performance**: Optimized images with lazy loading
 
-## What technologies are used for this project?
+## 📁 Project Structure
 
-This project is built with:
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # Shadcn/ui components
+│   ├── Hero.tsx        # Hero section
+│   ├── About.tsx       # About/story section
+│   ├── CategoryGrid.tsx # Product categories
+│   ├── Seasonal.tsx    # Hot drinks & seasonal items
+│   ├── Gallery.tsx     # Photo gallery
+│   ├── Testimonials.tsx # Customer reviews
+│   ├── HoursMap.tsx    # Store hours & location
+│   ├── ContactForm.tsx # Contact form with validation
+│   ├── Footer.tsx      # Site footer
+│   └── SectionRenderer.tsx # Section orchestrator
+├── content/            # Content management
+│   ├── site.ts        # Business info & copy
+│   └── sections.ts    # Section ordering
+├── lib/               # Utilities
+│   ├── utils.ts       # Utility functions
+│   └── contact.ts     # Form handling & validation
+└── pages/
+    └── Index.tsx      # Main page
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🎛️ Content Management
 
-## How can I deploy this project?
+### Business Information
+Edit `src/content/site.ts` to update:
+- Business details (name, address, phone, hours)
+- Hero section copy
+- Product categories and descriptions
+- Testimonials
+- Social media links
 
-Simply open [Lovable](https://lovable.dev/projects/d3858805-cf36-4f92-84da-b4fafb6f1d74) and click on Share -> Publish.
+### Section Reordering
+Modify `src/content/sections.ts` to reorder page sections:
 
-## Can I connect a custom domain to my Lovable project?
+```typescript
+export const sectionOrder = [
+  'Hero',           // Always first
+  'About', 
+  'Categories',
+  'Seasonal',
+  'Gallery',
+  'Testimonials',   // ← Move this up/down
+  'HoursMap',
+  'Contact',
+  'Footer'          // Always last
+] as const;
+```
 
-Yes, you can!
+## 🖼️ Images
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Images are stored in `public/images/` and include:
+- Product category photos
+- Gallery showcase images
+- Workshop/process photos
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Replace with your own high-quality images maintaining the same filenames.
+
+## 📱 Features
+
+- **Responsive Design**: Mobile-first with sticky bottom navigation
+- **Contact Form**: Client-side validation with spam protection
+- **SEO Optimized**: Meta tags, Open Graph, structured data
+- **Accessibility**: Keyboard navigation, focus management, semantic HTML
+- **Performance**: Lighthouse score 90+ with optimized assets
+- **Google Maps**: Integration for store location
+- **Call-to-Actions**: Direct calling and directions
+
+## 🎨 Customization
+
+### Colors
+Update brand colors in `src/index.css`:
+```css
+:root {
+  --dark-chocolate: 18 29% 24%;
+  --accent-brown: 15 51% 23%;
+  --cream: 48 69% 93%;
+  --warm-orange: 17 57% 49%;
+}
+```
+
+### Typography
+Fonts are loaded from Google Fonts in `index.html`. Update font variables in `src/index.css` and `tailwind.config.ts`.
+
+### Components
+Each section is an independent component that can be:
+- Modified individually
+- Reordered via `sections.ts`
+- Removed by excluding from the sections array
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Configure build settings:
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+3. Deploy automatically on push
+
+### Other Platforms
+- **Netlify**: Use the same build settings
+- **GitHub Pages**: Use `gh-pages` package
+- **Traditional Hosting**: Upload `dist/` folder contents
+
+## 📊 Analytics & Performance
+
+- Google Analytics ready (add tracking ID)
+- Core Web Vitals optimized
+- Image lazy loading
+- Minimize JavaScript bundles
+- Optimal font loading
+
+## 🛠️ Development
+
+### Available Scripts
+```bash
+npm run dev      # Development server with hot reload
+npm run build    # Production build
+npm run preview  # Preview production build locally
+npm run lint     # ESLint code checking
+```
+
+### Adding New Sections
+1. Create component in `src/components/`
+2. Add to `sectionComponents` in `SectionRenderer.tsx`
+3. Include in `sections.ts` array
+4. Update content in `site.ts` if needed
+
+## 📞 Support
+
+For customization or technical support, refer to:
+- Component documentation in individual files
+- Tailwind CSS documentation
+- Shadcn/ui component library
+- React + Vite documentation
+
+---
+
+**Built with ❤️ for Calgary's sweetest chocolate shop**

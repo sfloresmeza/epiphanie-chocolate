@@ -90,9 +90,7 @@ const Footer = () => {
             </div>
             
             <div className="flex items-center gap-2 text-sm text-secondary-foreground/70">
-              <span>© {currentYear} {siteConfig.businessName}. Made with</span>
-              <Heart className="w-4 h-4 text-accent fill-current" />
-              <span>in Calgary</span>
+              <span>© {currentYear} {siteConfig.businessName}. Powered by ByteSphere</span>
             </div>
           </div>
         </div>
